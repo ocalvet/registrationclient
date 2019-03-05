@@ -5,9 +5,9 @@ import lightGreen from "@material-ui/core/colors/lightGreen"
 import blue from "@material-ui/core/colors/blue"
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Home from './Containers/Home';
-import Register from './Containers/Register';
-import Baseline from './Containers/Baseline';
+import Home from './Home';
+import Register from './Register/Register';
+import Baseline from './Baseline/Baseline';
 
 const theme = createMuiTheme({
 	palette: {
