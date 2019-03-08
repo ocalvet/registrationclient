@@ -8,14 +8,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Home from './Home';
 import Register from './Register/Register';
 import Baseline from './Baseline/Baseline';
+import "./App.css";
 
 const theme = createMuiTheme({
 	palette: {
 		primary: lightGreen,
-		secondary: blue, 
-    background: {
-      default: "#282828"
-    }
+    secondary: blue, 
+    type: 'dark',
   }
 });
 
