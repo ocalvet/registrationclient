@@ -26,9 +26,17 @@ import { request } from "https";
 
 import HackImg from "../assests/hack.PNG"
 
-class Register extends React.Component {
-  allItems = [{ id: 1, name: 'nodeJs' }, { id: 2, name: 'reactJs' }];
+const skillOptions = [
+  'nodeJs',
+  'React',
+  'Ng',
+  'C#',
+  'Java',
+  'Sql Server',
+  'Oracle',
+];
 
+class Register extends React.Component {
   constructor(props) {
     super(props);
 
