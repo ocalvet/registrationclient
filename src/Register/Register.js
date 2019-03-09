@@ -1,26 +1,20 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "@material-ui/core/";
+import { Dialog, DialogContent, DialogContentText ,DialogActions } from "@material-ui/core/";
 import Button from "@material-ui/core/Button";
 import Chip from "@material-ui/core/Chip";
+import Fab from '@material-ui/core/Fab';
+import FormControl from "@material-ui/core/FormControl";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
-import Input from '@material-ui/core/Input';
+import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 import Select from '@material-ui/core/Select';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-
+import AddIcon from '@material-ui/icons/Add';
 import HackImg from "../assests/hack.PNG"
-
-const skillOptions = [
-  'nodeJs',
-  'React',
-  'Ng',
-  'C#',
-  'Java',
-  'Sql Server',
-  'Oracle',
-];
 
 class Register extends React.Component {
   constructor(props) {
@@ -28,6 +22,9 @@ class Register extends React.Component {
 
     this.state = {
       formTouched: false,
+      dialogOpen: false,
+      newItem: "",
+      skillOptions: ["nodeJs", "React", "Ng", "C#", "Java", "Oracle", "SQL Server"],
       firstName: "John",
       lastName: "Doe",
       email: "",
@@ -56,6 +53,24 @@ class Register extends React.Component {
   handleTextChange = name => event => {
     this.setState({ formTouched: true })
     this.setState({ [name]: event.target.value });
+  };
+
+  handleDialogClickOpen = () => {
+    this.setState({ dialogOpen: true });
+  };
+
+  handleDialogAddItem = () => {
+    var newOptions = this.state.skillOptions;
+    newOptions.push(this.state.newItem);
+    this.setState({skillOptions: newOptions});
+    
+    var newSkills = this.state.skills;
+    newSkills.push(this.state.newItem);
+    this.setState({skills: newSkills});
+  }
+
+  handleDialogClose = () => {
+    this.setState({ dialogOpen: false });
   };
 
   handleContinue = () => {
@@ -168,28 +183,35 @@ class Register extends React.Component {
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
-                      <Grid item xs={12}>
-                        Skills
-                        <Select
-                          label="Skills" multiple
-                          value={this.state.skills}
-                          onChange={this.handleTextChange("skills")}
-                          input={<Input id="select-multiple-chip" />}
-                          renderValue={selected => (
-                            <div>
-                              {selected.map(value => (
-                                <Chip key={value} label={value} color={"primary"} style={{marginRight: '2px'}} />
-                              ))}
-                            </div>
-                          )}
-                          variant="outlined" fullWidth
-                        >
-                          {skillOptions.map(skills => (
-                            <MenuItem key={skills} value={skills}>
-                              {skills}
-                            </MenuItem>
-                          ))}
-                        </Select>
+                      <Grid item xs={10}>
+                        <FormControl fullWidth variant="outlined" style={{marginTop: '15px'}}>
+                          <InputLabel shrink htmlFor="skillSelect">Skills</InputLabel>
+                          <Select
+                            multiple
+                            value={this.state.skills}
+                            onChange={this.handleTextChange("skills")}
+                            input={<OutlinedInput id="skillSelect" labelWidth='200px' />}
+                            renderValue={selected => (
+                              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                                {selected.map(value => (
+                                  <Chip key={value} label={value} color={"primary"} style={{ marginTop: '3px', marginRight: '3px' }} />
+                                ))}
+                              </div>
+                            )}
+                            fullWidth
+                          >
+                            {this.state.skillOptions.map(skills => (
+                              <MenuItem key={skills} value={skills}>
+                                {skills}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item xs={2}>
+                        <Fab color="primary" aria-label="Add" size="small" style={{marginTop: '22px'}} onClick={() => this.handleDialogClickOpen()}>
+                          <AddIcon />
+                        </Fab>
                       </Grid>
                     </Grid>
                     <br />
@@ -203,6 +225,21 @@ class Register extends React.Component {
           </Grid>
         </Grid>
 
+        <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose}>
+          <DialogContent>
+            <DialogContentText>
+              New Skill: <TextField id="newItem" onChange={this.handleTextChange("newItem")}/>
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => this.handleDialogAddItem()} color="primary" autoFocus>
+              Add
+            </Button>
+            <Button onClick={this.handleDialogClose} color="disabled">
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     )
   }
