@@ -25,16 +25,6 @@ import HackImg from "../Graphics/ncciHackathonLogo.png";
 
 import HackImg from "../assests/hack.PNG"
 
-const skillOptions = [
-  'nodeJs',
-  'React',
-  'Ng',
-  'C#',
-  'Java',
-  'Sql Server',
-  'Oracle',
-];
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
