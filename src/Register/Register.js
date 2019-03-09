@@ -24,7 +24,11 @@ import PersonIcon from "@material-ui/icons/Person";
 import HackImg from "../assests/hack.PNG"
 import { request } from "https";
 
+import HackImg from "../assests/hack.PNG"
+
 class Register extends React.Component {
+  allItems = [{ id: 1, name: 'nodeJs' }, { id: 2, name: 'reactJs' }];
+
   constructor(props) {
     super(props);
 
@@ -140,6 +144,7 @@ class Register extends React.Component {
     }).catch(function(error){
       console.log('Request Failed', error)
     });
+    debugger;
 
     console.log(userData);
     debugger;
