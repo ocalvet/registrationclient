@@ -23,7 +23,11 @@ import PersonIcon from "@material-ui/icons/Person";
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
 import HackImg from "../Graphics/ncciHackathonLogo.png";
 
+import HackImg from "../assests/hack.PNG"
+
 class Register extends React.Component {
+  allItems = [{ id: 1, name: 'nodeJs' }, { id: 2, name: 'reactJs' }];
+
   constructor(props) {
     super(props);
 
@@ -146,6 +150,7 @@ class Register extends React.Component {
       //Handle error
       console.log(error);
     });
+    debugger;
 
     this.props.history.push("/Baseline");
   }
