@@ -1,31 +1,48 @@
 import React from "react";
-import { Card, CardContent } from "@material-ui/core/";
+import { Card, CardContent, CardHeader } from "@material-ui/core/";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
+import Hidden from '@material-ui/core/Hidden';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
+import HackImg from "../assests/hack.PNG"
+
 class Register extends React.Component {
+  allItems = [{ id: 1, name: 'nodeJs' }, { id: 2, name: 'reactJs' }];
+
   constructor(props) {
     super(props);
 
     this.state = {
-      firstName: "Jon",
+      formTouched: false,
+      firstName: "John",
       lastName: "Doe",
-      email: "jon@email.com",
-      teamName: "blue",
+      email: "",
+      teamName: "",
       teamMembers: ["one", "two", "three"],
-      ideaTitle: "Idea 1",
+      ideaTitle: "",
       ideaDescription: "Another idea that will be better",
-      skills: []
+      skills: ["nodeJs", "react"]
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleTextChange = this.handleTextChange.bind(this);
     this.handleContinue = this.handleContinue.bind(this);
   }
 
-  handleChange = name => event => {
-    debugger;
+  formIsValid() {
+    if (this.state.firstName.length === 0 || this.state.lastName.length === 0 || !this.emailIsValid(this.state.email))
+      return false
+    else
+      return true
+  }
+
+  emailIsValid (email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  }
+
+  handleTextChange = name => event => {
+    this.setState({ formTouched: true })
     this.setState({ [name]: event.target.value });
   };
 
@@ -46,9 +63,16 @@ class Register extends React.Component {
       }
     };
 
-    debugger;
+    // fetch(request, {mode: 'no-cors'})
+    // .then(function(response) {
+    //   console.log(response); 
+    // }).catch(function(error) {  
+    //   console.log('Request failed', error)  
+    // });
 
-    fetch("http://example.com", {
+
+    fetch("http://940.121.12.189:8080/api/registrations/", {
+      mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
@@ -60,8 +84,9 @@ class Register extends React.Component {
         console.log("Successful" + data);
       });
     });
+    debugger;
 
-    this.props.history.push(`/Baseline`)
+    // this.props.history.push(`/Baseline`)
   }
 
   render() {
@@ -70,65 +95,77 @@ class Register extends React.Component {
         <Grid container justify="center">
           <Grid item md={5}>
             <Card>
+              <CardHeader title="NCCI HACKATHON" />
               <CardContent>
                 <Grid container spacing={16} alignItems="stretch">
                   <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
                     <Typography variant="h3" color="secondary">Register Now..</Typography>
-                    <Typography variant="h5" color="primary">and let the hacking begin!</Typography>
+                    <Hidden mdDown>
+                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
+                    </Hidden>
+                    <Typography variant="h5" color="secondary">and let the hacking begin!</Typography>
                   </Grid>
                   <Grid item lg={7}>
                     <Grid container>
                       <Grid item xs={12}>
                         <TextField id="firstName" label="First Name"
                           value={this.state.firstName}
-                          onChange={this.handleChange("firstName")}
+                          onChange={this.handleTextChange("firstName")}
                           margin="normal" variant="outlined" fullWidth
+                          helperText={this.state.formTouched && this.state.firstName.length === 0 ? 'Required' : ''}
+                          error={this.state.formTouched && this.state.firstName.length === 0 ? true : false}
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="lastName" label="Last Name"
                           value={this.state.lastName}
-                          onChange={this.handleChange("lastName")}
+                          onChange={this.handleTextChange("lastName")}
                           margin="normal" variant="outlined" fullWidth
+                          helperText={this.state.formTouched && this.state.lastName.length === 0 ? 'Required' : ''}
+                          error={this.state.formTouched && this.state.lastName.length === 0 ? true : false}
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="email" label="Email"
                           value={this.state.email}
-                          onChange={this.handleChange("email")}
+                          onChange={this.handleTextChange("email")}
                           margin="normal" variant="outlined" fullWidth
+                          helperText={this.state.formTouched && !this.emailIsValid(this.state.email) ? 'Valid Email Required' : ''}
+                          error={this.state.formTouched && !this.emailIsValid(this.state.email) ? true : false}
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="teamName" label="Team Name"
                           value={this.state.teamName}
-                          onChange={this.handleChange("teamName")}
+                          onChange={this.handleTextChange("teamName")}
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="ideaTitle" label="Idea"
                           value={this.state.ideaTitle}
-                          onChange={this.handleChange("ideaTitle")}
+                          onChange={this.handleTextChange("ideaTitle")}
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="ideaDescription" label="Idea Description"
                           value={this.state.ideaDescription}
-                          onChange={this.handleChange("ideaDescription")}
+                          onChange={this.handleTextChange("ideaDescription")}
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="skills" label="Skills"
                           value={this.state.skills}
-                          onChange={this.handleChange("skills")}
+                          onChange={this.handleTextChange("skills")}
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
                     </Grid>
-                    <Button onClick={this.handleContinue} variant="outlined" color="secondary">Continue</Button>
+                    <Button onClick={this.handleContinue} variant="outlined" color="primary" disabled={!this.formIsValid()}>
+                      Continue
+                    </Button>
                   </Grid>
                 </Grid>
               </CardContent>
