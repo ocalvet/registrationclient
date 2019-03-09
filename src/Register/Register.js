@@ -1,16 +1,28 @@
 import React from "react";
 import { Card, CardContent, CardHeader } from "@material-ui/core/";
 import Button from "@material-ui/core/Button";
+import Chip from "@material-ui/core/Chip";
 import Grid from "@material-ui/core/Grid";
-import Hidden from '@material-ui/core/Hidden';
+import Hidden from "@material-ui/core/Hidden";
+import Input from '@material-ui/core/Input';
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from '@material-ui/core/Select';
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
 import HackImg from "../assests/hack.PNG"
 
-class Register extends React.Component {
-  allItems = [{ id: 1, name: 'nodeJs' }, { id: 2, name: 'reactJs' }];
+const skillOptions = [
+  'nodeJs',
+  'React',
+  'Ng',
+  'C#',
+  'Java',
+  'Sql Server',
+  'Oracle',
+];
 
+class Register extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +35,7 @@ class Register extends React.Component {
       teamMembers: ["one", "two", "three"],
       ideaTitle: "",
       ideaDescription: "Another idea that will be better",
-      skills: ["nodeJs", "react"]
+      skills: []
     };
 
     this.handleTextChange = this.handleTextChange.bind(this);
@@ -37,7 +49,7 @@ class Register extends React.Component {
       return true
   }
 
-  emailIsValid (email) {
+  emailIsValid(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
   }
 
@@ -71,19 +83,20 @@ class Register extends React.Component {
     // });
 
 
-    fetch("http://940.121.12.189:8080/api/registrations/", {
-      mode: 'no-cors',
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    }).then(response => {
-      response.json().then(data => {
-        console.log("Successful" + data);
-      });
-    });
+    // fetch("http://940.121.12.189:8080/api/registrations/", {
+    //   mode: 'no-cors',
+    //   method: "POST",
+    //   body: JSON.stringify(userData),
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   }
+    // }).then(response => {
+    //   response.json().then(data => {
+    //     console.log("Successful" + data);
+    //   });
+    // });
+
     debugger;
 
     // this.props.history.push(`/Baseline`)
@@ -156,13 +169,30 @@ class Register extends React.Component {
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField id="skills" label="Skills"
+                        Skills
+                        <Select
+                          label="Skills" multiple
                           value={this.state.skills}
                           onChange={this.handleTextChange("skills")}
-                          margin="normal" variant="outlined" fullWidth
-                        />
+                          input={<Input id="select-multiple-chip" />}
+                          renderValue={selected => (
+                            <div>
+                              {selected.map(value => (
+                                <Chip key={value} label={value} color={"primary"} style={{marginRight: '2px'}} />
+                              ))}
+                            </div>
+                          )}
+                          variant="outlined" fullWidth
+                        >
+                          {skillOptions.map(skills => (
+                            <MenuItem key={skills} value={skills}>
+                              {skills}
+                            </MenuItem>
+                          ))}
+                        </Select>
                       </Grid>
                     </Grid>
+                    <br />
                     <Button onClick={this.handleContinue} variant="outlined" color="primary" disabled={!this.formIsValid()}>
                       Continue
                     </Button>
