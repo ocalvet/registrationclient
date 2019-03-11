@@ -1,0 +1,222 @@
+html,
+body {
+  font-size: 62.5%;
+  width: 100vw;
+  height: 100vh;
+  background-color: #282c34;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background: url(Graphics/ncci3.png) no-repeat top center;
+    position: relative;
+    background-color: #282c34;
+    -webkit-animation: 5s overlay forwards;
+            animation: 5s overlay forwards;
+  }
+
+h1 {
+  font-size: 7rem;
+}
+
+h2 {
+    font-size: 5rem;
+    color: #008ba8
+  }
+b {
+    font-size: 4rem;
+    color: #545555
+}
+p {
+  margin-top: -1em;
+  font-size: 3rem;
+}
+
+.container {
+  width: 100vw;
+  height: 100%;
+  background: #A9A9A9;
+  display: block;
+}
+
+.stripe--1 {
+  position: absolute;
+  height: 50vh;
+  width: 100vw;
+  top: -10%;
+  margin-top: -200px;
+  -webkit-transform: skewY(-58deg);
+          transform: skewY(-8deg);
+  background: linear-gradient(-45deg, #018afe, #008ba8, #00ad13);
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 5s ease infinite;
+  animation: Gradient 5s ease infinite;
+}
+
+.text-box--1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-transform: skewy(8deg);
+          transform: skewy(8deg);
+  color: rgba(255, 255, 255, 0.96);
+  position: absolute;
+  top: 40%;
+  left: 10%;
+}
+.text-box--2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(254, 254, 255);
+  position: absolute;
+  bottom: 15%;
+  right: 12%;
+  z-index: 1;
+  text-shadow: 2px 2px 8px rgb(78, 78, 78);
+}
+
+.text-box--3 {
+    display: flex;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #eaeaea;
+    flex-direction: column;
+    justify-content: center;
+    align-items: bottom;
+    
+    color: #4e4d4d;
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    right: 20%;
+
+  }
+
+  .text-box--4 {
+    position: absolute;
+    top: 65%;
+    left: 15%;
+    right: 33%;
+  }
+
+  .hackathon_Logo {
+    position: absolute;
+    height: 200%;
+    top: 163%;
+    left: 2%;
+    
+  }
+
+
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate
+{
+	transition: all 0.1s;
+	-webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+	position: relative;
+	padding: 10px 40px;
+    margin: 0px 10px 10px 0px;
+    float: left;
+	border-radius: 10px;
+	font-family: 'Pacifico', cursive;
+	font-size: 25px;
+	color: #FFF;
+	text-decoration: none;	
+}
+
+.red
+{
+	background-color: #E74C3C;
+	border-bottom: 5px solid #BD3E31;
+	text-shadow: 0px -2px #BD3E31;
+}
+
+.action-button:active
+{
+	transform: translate(0px,5px);
+  -webkit-transform: translate(0px,5px);
+	border-bottom: 1px solid;
+}
+
+a, a:visited { 
+    color: white;
+  }
+
+  footer {
+    display: flex;
+    padding: 45px;
+    border-radius: 10px;
+    background-color: #eaeaea;
+    justify-content: center;
+    align-items: bottom;
+    bottom: -260%;
+    left: 0;
+    color: #4e4d4d;
+    position: absolute;
+    margin: 50px;
+    left: 20%;
+    right: 20%;
+  }
+
+  * {
+    -webkit-transition-property: all;
+    -webkit-transition-duration: .2s;
+    -moz-transition-timing-function: cubic-bezier(100,50,21,6);
+    -moz-transition-property: all;
+    -moz-transition-timing-function: cubic-bezier(100,50,21,6);
+  }
+  
+  .menu-body{
+    background:#4e4d4d;
+    padding:25px;
+    text-align:center;
+    font-family: 'Oswald', sans-serif;
+  }
+  
+  .btn{
+    color:#999;
+    background:rgba(0, 0, 0, 0.5);
+    padding:10px 20px;
+    font-size:12px;
+    text-decoration:none;
+    letter-spacing:2px;
+    text-transform:uppercase;
+  }
+  
+  .btn:hover{
+    border:none;
+    background:rgba(0, 0, 0, 0.4);
+    background:#fff;
+    padding:20px 20px gray;
+    color:#1b1b1b;
+  }
