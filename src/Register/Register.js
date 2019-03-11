@@ -15,11 +15,14 @@ import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
+import {sortBy} from "lodash";
+
 
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
 import HackImg from "../assests/hack.PNG"
+import { request } from "https";
 
 class Register extends React.Component {
   constructor(props) {
@@ -29,6 +32,7 @@ class Register extends React.Component {
       formTouched: false,
       dialogOpen: false,
       dialogType: '',
+      dialogMessage: '',
       newItem: "",
       skillOptions: ["nodeJs", "React", "Ng", "C#", "Java", "Oracle", "SQL Server"],
       firstName: "",
@@ -76,6 +80,8 @@ class Register extends React.Component {
         var newSkills = this.state.skills;
         newSkills.push(this.state.newItem);
         this.setState({ skills: newSkills });
+      } else {
+        this.setState({dialogMessage: "Skill entered is a duplicate."})
       };
 
       if (typeof this.state.skillOptions.find(x => x === this.state.newItem) === 'undefined') {
@@ -88,6 +94,8 @@ class Register extends React.Component {
         var newMember = this.state.teamMembers;
         newMember.push(this.state.newItem);
         this.setState({ teamMembers: newMember });
+      } else {
+        this.setState({dialogMessage: "Teammate entered is a duplicate."})
       };
     }
 
@@ -104,7 +112,8 @@ class Register extends React.Component {
       "user": {
         "firstName": this.state.firstName,
         "lastName": this.state.lastName,
-        "email": this.state.email
+        "email": this.state.email,
+        "skills": this.state.skills
       },
       "team": {
         "name": this.state.teamName,
@@ -116,15 +125,7 @@ class Register extends React.Component {
       }
     };
 
-    // fetch(request, {mode: 'no-cors'})
-    // .then(function(response) {
-    //   console.log(response); 
-    // }).catch(function(error) {  
-    //   console.log('Request failed', error)  
-    // });
-
-
-    fetch("http://940.121.12.189:8080/api/registrations/", {
+    fetch("http://40.121.12.189:8080/api/registrations/", {
       mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(userData),
@@ -136,8 +137,11 @@ class Register extends React.Component {
       response.json().then(data => {
         console.log("Successful" + data);
       });
+    }).catch(function(error){
+      console.log('Request Failed', error)
     });
 
+    console.log(userData);
     debugger;
 
     this.props.history.push(`/Baseline`)
@@ -232,7 +236,7 @@ class Register extends React.Component {
                             multiple
                             value={this.state.skills}
                             onChange={this.handleTextChange("skills")}
-                            input={<OutlinedInput id="skillSelect" labelWidth='200px' />}
+                            input={<OutlinedInput id="skillSelect" />}
                             renderValue={selected => (
                               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 {selected.map(value => (
@@ -242,7 +246,7 @@ class Register extends React.Component {
                             )}
                             fullWidth
                           >
-                            { this.state.skillOptions.map(skills => (
+                            { sortBy(this.state.skillOptions).map(skills => (
                               <MenuItem key={skills} value={skills}>
                                 {skills}
                               </MenuItem>
@@ -252,7 +256,7 @@ class Register extends React.Component {
                       </Grid>
                       <Grid item xs={2}>
                         <Tooltip title="Add a skill">
-                          <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')}>
+                          <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
                             <AddToQueueIcon />
                           </Fab>
                         </Tooltip>
@@ -275,6 +279,7 @@ class Register extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
+              <Typography>{this.state.dialogMessage}</Typography>
               <TextField id="newItem" label={this.state.dialogType} 
                 value={this.state.newItem} inputProps={{maxLength: 35}}
                 onChange={this.handleTextChange("newItem")}
