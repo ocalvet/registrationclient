@@ -22,7 +22,7 @@ import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
 import HackImg from "../assests/hack.PNG"
-import { request } from "https";
+
 
 import HackImg from "../assests/hack.PNG"
 
@@ -77,11 +77,13 @@ class Register extends React.Component {
   };
 
   handleDialogAddItem = () => {
+    this.setState({dialogMessage: ""});
     if (this.state.dialogType === "Skill") {
       if (typeof this.state.skills.find(x => x === this.state.newItem) === 'undefined') {
         var newSkills = this.state.skills;
         newSkills.push(this.state.newItem);
         this.setState({ skills: newSkills });
+        this.setState({ newItem: "" });
       } else {
         this.setState({dialogMessage: "Skill entered is a duplicate."})
       };
@@ -96,12 +98,11 @@ class Register extends React.Component {
         var newMember = this.state.teamMembers;
         newMember.push(this.state.newItem);
         this.setState({ teamMembers: newMember });
+        this.setState({ newItem: "" });
       } else {
         this.setState({dialogMessage: "Teammate entered is a duplicate."})
       };
     }
-
-    this.setState({ newItem: "" });
   }
 
   handleDialogClose = () => {
@@ -135,12 +136,12 @@ class Register extends React.Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       }
-    }).then(response => {
-      response.json().then(data => {
-        console.log("Successful" + data);
-      });
-    }).catch(function(error){
-      console.log('Request Failed', error)
+    }).then(function (response) {
+      //Check if response is 200(OK) 
+      console.log(userData);
+    }).catch(function (error) {
+      //Handle error
+      console.log(error);
     });
     debugger;
 
@@ -204,10 +205,12 @@ class Register extends React.Component {
                       </Grid>
                       <Grid item xs={2}>
                         <Tooltip title="Add your teammate">
+                          <div>
                           <Fab color="primary" size="small" style={{ marginTop: '22px' }} disabled={(!this.state.teamName.length)}
                             onClick={() => this.handleDialogClickOpen('Teammate')}>
                             <PersonAddIcon />
                           </Fab>
+                          </div>
                         </Tooltip>
                       </Grid>
                       <Grid item xs={2}>
@@ -239,7 +242,7 @@ class Register extends React.Component {
                             multiple
                             value={this.state.skills}
                             onChange={this.handleTextChange("skills")}
-                            input={<OutlinedInput id="skillSelect" />}
+                            input={<OutlinedInput id="skillSelect" labelWidth={40}/>}
                             renderValue={selected => (
                               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 {selected.map(value => (
@@ -259,9 +262,11 @@ class Register extends React.Component {
                       </Grid>
                       <Grid item xs={2}>
                         <Tooltip title="Add a skill">
+                          <div>
                           <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
                             <AddToQueueIcon />
                           </Fab>
+                          </div>
                         </Tooltip>
                       </Grid>
                     </Grid>
