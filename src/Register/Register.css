@@ -1,0 +1,13 @@
+.stripe--1 {
+    position: absolute;
+    height: 50vh;
+    width: 100vw;
+    top: -10%;
+    margin-top: -200px;
+    -webkit-transform: skewY(-58deg);
+            transform: skewY(-8deg);
+    background: linear-gradient(-45deg, #018afe, #008ba8, #00ad13);
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 5s ease infinite;
+    animation: Gradient 5s ease infinite;
+  }
