@@ -78,6 +78,7 @@ class Register extends React.Component {
 
   handleDialogAddItem = () => {
     this.setState({dialogMessage: ""});
+
     if (this.state.dialogType === "Skill") {
       if (typeof this.state.skills.find(x => x === this.state.newItem) === 'undefined') {
         var newSkills = this.state.skills;
@@ -144,6 +145,7 @@ class Register extends React.Component {
       console.log(error);
     });
     this.props.history.push("/Baseline");
+
   }
 
   render() {
