@@ -23,8 +23,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
 import HackImg from "../Graphics/ncciHackathonLogo.png";
 
-import HackImg from "../assests/hack.PNG"
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
