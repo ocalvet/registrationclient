@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent, CardHeader } from "@material-ui/core/";
+import { Card, CardContent } from "@material-ui/core/";
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@material-ui/core/";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -17,12 +17,14 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import {sortBy} from "lodash";
 
-
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
-import HackImg from "../assests/hack.PNG"
+import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
+//import HackImg from "../Graphics/hack.PNG";
+import HackImg from "../Graphics/ncciHackathonLogo.png";
 
+import "./Register.css";
 
 import HackImg from "../assests/hack.PNG"
 
@@ -36,7 +38,7 @@ class Register extends React.Component {
       dialogType: '',
       dialogMessage: '',
       newItem: "",
-      skillOptions: ["nodeJs", "React", "Ng", "C#", "Java", "Oracle", "SQL Server"],
+      skillOptions: ["nodeJs", "React", "Angular", "C#", "Java", "Oracle", "SQL Server", "Unix"],
       firstName: "",
       lastName: "",
       email: "",
@@ -154,18 +156,22 @@ class Register extends React.Component {
   render() {
     return (
       <div>
+        <div class="stripe--1">
+          <div class="text-box--1">
+            <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
+          </div>
+        </div>
         <Grid container justify="center">
           <Grid item md={5}>
             <Card>
-              <CardHeader title="HACKATHON" />
-              <CardContent>
+              <CardContent style={{paddingTop: '200px'}}>
                 <Grid container spacing={16} alignItems="stretch">
                   <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
-                    <Typography variant="h3" color="secondary">Register Now..</Typography>
+                    <Typography variant="h3" color="secondary">Register Here..</Typography>
                     <Hidden mdDown>
-                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
+                      <img src={HackImg} alt="Hackathon" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.9" }} />
                     </Hidden>
-                    <Typography variant="h5" color="secondary">and let the hacking begin!</Typography>
+                    <Typography variant="h5" color="secondary">And Get your Hack-on!</Typography>
                   </Grid>
                   <Grid item lg={7}>
                     <Grid container>
@@ -309,3 +315,4 @@ class Register extends React.Component {
 }
 
 export default Register;
+

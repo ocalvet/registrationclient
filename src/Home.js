@@ -11,7 +11,6 @@ class Home extends React.Component {
     render() {
 		return (
             <div>
-
                 <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'></link>
                 <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'></link>
                 <div class="stripe--1">
