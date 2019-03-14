@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardContent } from "@material-ui/core/";
+import { Card, CardContent, CardHeader } from "@material-ui/core/";
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@material-ui/core/";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -17,12 +17,21 @@ import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
 import { sortBy } from "lodash";
 
+
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
+<<<<<<< HEAD
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
 import HackImg from "../Graphics/ncciHackathonLogo.png";
 
+=======
+import HackImg from "../assests/hack.PNG"
+
+
+import HackImg from "../assests/hack.PNG"
+
+>>>>>>> add helper text
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -35,7 +44,7 @@ class Register extends React.Component {
       dialogType: '',
       dialogMessage: '',
       newItem: "",
-      skillOptions: ["nodeJs", "React", "Angular", "C#", "Java", "Oracle", "SQL Server", "Unix"],
+      skillOptions: ["nodeJs", "React", "Ng", "C#", "Java", "Oracle", "SQL Server"],
       firstName: "",
       lastName: "",
       email: "",
@@ -146,13 +155,17 @@ class Register extends React.Component {
       //Handle error
       console.log(error);
     });
+<<<<<<< HEAD
     debugger;
 
+=======
+>>>>>>> add helper text
     this.props.history.push("/Baseline");
   }
 
   render() {
     return (
+<<<<<<< HEAD
       <div style={{paddingTop: '40px'}}>
         <div class="stripe--1">
           <div class="text-box--1">
@@ -166,10 +179,21 @@ class Register extends React.Component {
                 <Grid container spacing={16} alignItems="stretch">
                   <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
                     <Typography variant="h3" color="secondary">Register Here</Typography>
+=======
+      <div>
+        <Grid container justify="center">
+          <Grid item md={5}>
+            <Card>
+              <CardHeader title="HACKATHON" />
+              <CardContent>
+                <Grid container spacing={16} alignItems="stretch">
+                  <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
+                    <Typography variant="h3" color="secondary">Register Now..</Typography>
+>>>>>>> add helper text
                     <Hidden mdDown>
-                      <img src={HackImg} alt="Hackathon" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.9" }} />
+                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
                     </Hidden>
-                    <Typography variant="h5" color="secondary">And Get your Hack-on!</Typography>
+                    <Typography variant="h5" color="secondary">and let the hacking begin!</Typography>
                   </Grid>
                   <Grid item lg={7}>
                     <Grid container>
@@ -318,4 +342,8 @@ class Register extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 export default Register;
+=======
+export default Register;
+>>>>>>> add helper text
