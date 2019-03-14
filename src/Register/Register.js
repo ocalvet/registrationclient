@@ -15,7 +15,7 @@ import Select from "@material-ui/core/Select";
 import TextField from "@material-ui/core/TextField";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
-import {sortBy} from "lodash";
+import { sortBy } from "lodash";
 
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
@@ -32,6 +32,8 @@ class Register extends React.Component {
 
     this.state = {
       formTouched: false,
+      displayTeammateHelper: false,
+      displaySkillHelper: false,
       dialogOpen: false,
       dialogType: '',
       dialogMessage: '',
@@ -63,6 +65,8 @@ class Register extends React.Component {
   }
 
   handleTextChange = name => event => {
+    this.setState({displayTeammateHelper: (name==="teamName")});
+    this.setState({displaySkillHelper: (name==="skills")});
     this.setState({ formTouched: true })
     this.setState({ [name]: event.target.value });
   };
@@ -77,7 +81,7 @@ class Register extends React.Component {
   };
 
   handleDialogAddItem = () => {
-    this.setState({dialogMessage: ""});
+    this.setState({ dialogMessage: "" });
 
     if (this.state.dialogType === "Skill") {
       if (typeof this.state.skills.find(x => x === this.state.newItem) === 'undefined') {
@@ -86,7 +90,7 @@ class Register extends React.Component {
         this.setState({ skills: newSkills });
         this.setState({ newItem: "" });
       } else {
-        this.setState({dialogMessage: "Skill entered is a duplicate."})
+        this.setState({ dialogMessage: "Skill entered is a duplicate." })
       };
 
       if (typeof this.state.skillOptions.find(x => x === this.state.newItem) === 'undefined') {
@@ -101,7 +105,7 @@ class Register extends React.Component {
         this.setState({ teamMembers: newMember });
         this.setState({ newItem: "" });
       } else {
-        this.setState({dialogMessage: "Teammate entered is a duplicate."})
+        this.setState({ dialogMessage: "Teammate entered is a duplicate." })
       };
     }
   }
@@ -159,7 +163,7 @@ class Register extends React.Component {
         <Grid container justify="center">
           <Grid item md={5}>
             <Card>
-              <CardContent style={{paddingTop: '200px'}}>
+              <CardContent style={{ paddingTop: '200px' }}>
                 <Grid container spacing={16} alignItems="stretch">
                   <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
                     <Typography variant="h3" color="secondary">Register Here..</Typography>
@@ -172,16 +176,16 @@ class Register extends React.Component {
                     <Grid container>
                       <Grid item xs={12}>
                         <TextField id="firstName" label="First Name"
-                          value={this.state.firstName} inputProps={{maxLength: 15}}
+                          value={this.state.firstName} inputProps={{ maxLength: 15 }}
                           onChange={this.handleTextChange("firstName")}
-                          margin="normal" variant="outlined" fullWidth 
+                          margin="normal" variant="outlined" fullWidth
                           helperText={this.state.formTouched && this.state.firstName.length === 0 ? 'Required' : ''}
                           error={this.state.formTouched && this.state.firstName.length === 0 ? true : false}
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="lastName" label="Last Name"
-                          value={this.state.lastName} inputProps={{maxLength: 20}}
+                          value={this.state.lastName} inputProps={{ maxLength: 20 }}
                           onChange={this.handleTextChange("lastName")}
                           margin="normal" variant="outlined" fullWidth
                           helperText={this.state.formTouched && this.state.lastName.length === 0 ? 'Required' : ''}
@@ -190,27 +194,30 @@ class Register extends React.Component {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="email" label="Email"
-                          value={this.state.email} inputProps={{maxLength: 50}}
+                          value={this.state.email} inputProps={{ maxLength: 50 }}
                           onChange={this.handleTextChange("email")}
                           margin="normal" variant="outlined" fullWidth
                           helperText={this.state.formTouched && !this.emailIsValid(this.state.email) ? 'Valid Email Required' : ''}
                           error={this.state.formTouched && !this.emailIsValid(this.state.email) ? true : false}
                         />
                       </Grid>
+                      <Grid item xs={12} style={{ display: (this.state.displayTeammateHelper ? 'block' : 'none') }}>
+                        <Typography>Add teammates by clicking the icon</Typography>
+                      </Grid>
                       <Grid item xs={10}>
                         <TextField id="teamName" label="Team Name"
-                          value={this.state.teamName} inputProps={{maxLength: 35}}
+                          value={this.state.teamName} inputProps={{ maxLength: 35 }}
                           onChange={this.handleTextChange("teamName")}
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
-                      <Grid item xs={2}>
+                      <Grid item xs={2} style={{ verticalAlign: 'bottom' }}>
                         <Tooltip title="Add your teammate">
                           <div>
-                          <Fab color="primary" size="small" style={{ marginTop: '22px' }} disabled={(!this.state.teamName.length)}
-                            onClick={() => this.handleDialogClickOpen('Teammate')}>
-                            <PersonAddIcon />
-                          </Fab>
+                            <Fab color="primary" size="small" style={{ marginTop: '22px' }} disabled={(!this.state.teamName.length)}
+                              onClick={() => this.handleDialogClickOpen('Teammate')}>
+                              <PersonAddIcon />
+                            </Fab>
                           </div>
                         </Tooltip>
                       </Grid>
@@ -224,17 +231,20 @@ class Register extends React.Component {
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="ideaTitle" label="Idea"
-                          value={this.state.ideaTitle} inputProps={{maxLength: 100}}
+                          value={this.state.ideaTitle} inputProps={{ maxLength: 100 }}
                           onChange={this.handleTextChange("ideaTitle")}
                           margin="normal" variant="outlined" fullWidth
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="ideaDescription" label="Idea Description"
-                          value={this.state.ideaDescription} inputProps={{maxLength: 200}}
+                          value={this.state.ideaDescription} inputProps={{ maxLength: 200 }}
                           onChange={this.handleTextChange("ideaDescription")}
                           margin="normal" variant="outlined" fullWidth
                         />
+                      </Grid>
+                      <Grid item xs={12} style={{ display: (this.state.displaySkillHelper ? 'block' : 'none') }}>
+                        <Typography>Add additional skills by clicking the icon</Typography>
                       </Grid>
                       <Grid item xs={10}>
                         <FormControl fullWidth variant="outlined" style={{ marginTop: '15px' }}>
@@ -243,7 +253,7 @@ class Register extends React.Component {
                             multiple
                             value={this.state.skills}
                             onChange={this.handleTextChange("skills")}
-                            input={<OutlinedInput id="skillSelect" labelWidth={40}/>}
+                            input={<OutlinedInput id="skillSelect" labelWidth={40} />}
                             renderValue={selected => (
                               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 {selected.map(value => (
@@ -253,7 +263,7 @@ class Register extends React.Component {
                             )}
                             fullWidth
                           >
-                            { sortBy(this.state.skillOptions).map(skills => (
+                            {sortBy(this.state.skillOptions).map(skills => (
                               <MenuItem key={skills} value={skills}>
                                 {skills}
                               </MenuItem>
@@ -264,9 +274,9 @@ class Register extends React.Component {
                       <Grid item xs={2}>
                         <Tooltip title="Add a skill">
                           <div>
-                          <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
-                            <AddToQueueIcon />
-                          </Fab>
+                            <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
+                              <AddToQueueIcon />
+                            </Fab>
                           </div>
                         </Tooltip>
                       </Grid>
@@ -284,19 +294,19 @@ class Register extends React.Component {
 
         <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose}>
           <DialogTitle>
-            Enter additional {this.state.dialogType} 
+            Enter additional {this.state.dialogType}
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
               <Typography>{this.state.dialogMessage}</Typography>
-              <TextField id="newItem" label={this.state.dialogType} 
-                value={this.state.newItem} inputProps={{maxLength: 35}}
+              <TextField id="newItem" label={this.state.dialogType}
+                value={this.state.newItem} inputProps={{ maxLength: 35 }}
                 onChange={this.handleTextChange("newItem")}
                 margin="normal" variant="outlined" fullWidth />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.handleDialogAddItem()} color="primary" disabled={(this.state.newItem==="")} autoFocus>
+            <Button onClick={() => this.handleDialogAddItem()} color="primary" disabled={(this.state.newItem === "")} autoFocus>
               Add
             </Button>
             <Button onClick={this.handleDialogClose} color="disabled">
