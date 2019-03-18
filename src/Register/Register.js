@@ -21,17 +21,9 @@ import { sortBy } from "lodash";
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
-<<<<<<< HEAD
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
 import HackImg from "../Graphics/ncciHackathonLogo.png";
 
-=======
-import HackImg from "../assests/hack.PNG"
-
-
-import HackImg from "../assests/hack.PNG"
-
->>>>>>> add helper text
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -155,17 +147,11 @@ class Register extends React.Component {
       //Handle error
       console.log(error);
     });
-<<<<<<< HEAD
-    debugger;
-
-=======
->>>>>>> add helper text
     this.props.history.push("/Baseline");
   }
 
   render() {
     return (
-<<<<<<< HEAD
       <div style={{paddingTop: '40px'}}>
         <div class="stripe--1">
           <div class="text-box--1">
@@ -179,17 +165,6 @@ class Register extends React.Component {
                 <Grid container spacing={16} alignItems="stretch">
                   <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
                     <Typography variant="h3" color="secondary">Register Here</Typography>
-=======
-      <div>
-        <Grid container justify="center">
-          <Grid item md={5}>
-            <Card>
-              <CardHeader title="HACKATHON" />
-              <CardContent>
-                <Grid container spacing={16} alignItems="stretch">
-                  <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
-                    <Typography variant="h3" color="secondary">Register Now..</Typography>
->>>>>>> add helper text
                     <Hidden mdDown>
                       <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
                     </Hidden>
@@ -342,8 +317,4 @@ class Register extends React.Component {
   }
 }
 
-<<<<<<< HEAD
 export default Register;
-=======
-export default Register;
->>>>>>> add helper text
