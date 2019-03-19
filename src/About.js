@@ -4,7 +4,7 @@ class About extends React.Component {
     render(){
         return (
             <div>
-                    <h1>About</h1>
+                    <h1>About</h1><br></br>
                     <p>
                     The NCCI Hackathon is the companies first hackathon. We are seeking to bring together the best and brightest hackers, developers, creatives, artists, and novices from across the company for 24 hours of coding, designing, and jam-packed fun.</p>
                     <br></br>
