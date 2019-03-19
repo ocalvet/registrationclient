@@ -11,7 +11,6 @@ class About extends React.Component {
                     <br></br>
                     <p>We’ll provide you with all the resources, mentorship, and food to do your thing; all you need to bring is your creativity and ideas. The Hackathon is also a gathering of some of the top developers. Whether you’re looking for creative, networking, or corporate opportunities, come ready to flex your networking game! Our hackathon is open to all levels: no matter if you’re a beginner or veteran, it’s an event not to miss!
                     </p>
-
             </div>
         )
     }
