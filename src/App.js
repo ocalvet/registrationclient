@@ -13,8 +13,15 @@ import "./App.css";
 const theme = createMuiTheme({
 	palette: {
 		primary: lightGreen,
+<<<<<<< HEAD
     secondary: blue, 
     type: 'dark',
+=======
+		secondary: blue, 
+    background: {
+      default: "#282c34"
+    }
+>>>>>>> Adjusted font to be 100%, removed menu.
   }
 });
 
