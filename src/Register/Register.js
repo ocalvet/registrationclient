@@ -21,7 +21,6 @@ import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
-//import HackImg from "../Graphics/hack.PNG";
 import HackImg from "../Graphics/ncciHackathonLogo.png";
 
 import "./Register.css";
@@ -141,15 +140,16 @@ class Register extends React.Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       }
-    }).then(function (response) {
+    }).then(res => res.json())
+    .then(res => {
       //Check if response is 200(OK) 
       console.log(userData);
     }).catch(function (error) {
       //Handle error
       console.log(error);
     });
-    this.props.history.push("/Baseline");
 
+    this.props.history.push("/Baseline");
   }
 
   render() {
