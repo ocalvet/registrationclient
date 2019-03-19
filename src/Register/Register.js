@@ -21,8 +21,8 @@ import {sortBy} from "lodash";
 import AddToQueueIcon from '@material-ui/icons/AddToQueue';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
-import HackImg from "../assests/hack.PNG"
-
+import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
+import HackImg from "../Graphics/ncciHackathonLogo.png";
 
 import HackImg from "../assests/hack.PNG"
 
@@ -136,7 +136,8 @@ class Register extends React.Component {
         Accept: "application/json",
         "Content-Type": "application/json"
       }
-    }).then(function (response) {
+    }).then(res => res.json())
+    .then(res => {
       //Check if response is 200(OK) 
       console.log(userData);
     }).catch(function (error) {
