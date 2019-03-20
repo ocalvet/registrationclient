@@ -47,10 +47,10 @@ class Baseline extends React.Component {
     render() {
         return (
             <div>
-                <Typography variant="h1" color="primary">Baseline</Typography>
+                <Typography variant="h3" color="primary">Enrollment Information</Typography>
                 <Grid container spacing={16}>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '410px' }}>
+                        <Card style={{ maxWidth: '410px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
                                 <img src={DeveloperImg} alt="Developer" />i
                                 <Badge badgeContent={this.state.registrationData.length} color="secondary">
@@ -75,7 +75,7 @@ class Baseline extends React.Component {
                         </Card>
                     </Grid>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '410px' }}>
+                        <Card style={{ maxWidth: '410px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
                                 <img src={TeamImg} alt="Team" />
                                 <Typography gutterBottom variant="h5" color="primary">{_.filter(this.state.registrationData, f => f.team.name !== "").length} Teams</Typography>
@@ -99,7 +99,7 @@ class Baseline extends React.Component {
                         </Card>
                     </Grid>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '410px' }}>
+                        <Card style={{ maxWidth: '410px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
                                 <img src={IdeaImg} alt="Idea" />
                                 <Badge badgeContent={_.filter(this.state.registrationData, f => f.idea.title !== "").length} color="secondary">
@@ -124,7 +124,7 @@ class Baseline extends React.Component {
                         </Card>
                     </Grid>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '410px' }}>
+                        <Card style={{ maxWidth: '410px', background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
                                 <img src={SkillsImg} alt="Skills" />
                                 <Typography gutterBottom variant="h5" color="primary">{this.getSkillData().length} Skills</Typography>

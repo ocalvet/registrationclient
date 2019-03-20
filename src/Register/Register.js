@@ -23,8 +23,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
 import HackImg from "../Graphics/ncciHackathonLogo.png";
 
-import "./Register.css";
-
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -154,7 +152,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{paddingTop: '40px'}}>
         <div class="stripe--1">
           <div class="text-box--1">
             <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
@@ -162,11 +160,11 @@ class Register extends React.Component {
         </div>
         <Grid container justify="center">
           <Grid item md={5}>
-            <Card>
+            <Card  style={{background: '#222222'}}>
               <CardContent style={{ paddingTop: '200px' }}>
                 <Grid container spacing={16} alignItems="stretch">
                   <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
-                    <Typography variant="h3" color="secondary">Register Here..</Typography>
+                    <Typography variant="h3" color="secondary">Register Here</Typography>
                     <Hidden mdDown>
                       <img src={HackImg} alt="Hackathon" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.9" }} />
                     </Hidden>
