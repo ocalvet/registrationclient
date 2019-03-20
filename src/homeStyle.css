@@ -53,6 +53,7 @@ p {
   background-size: 400% 400%;
   -webkit-animation: Gradient 5s ease infinite;
   animation: Gradient 5s ease infinite;
+  margin-left: -20px;
 }
 
 .text-box--1 {
