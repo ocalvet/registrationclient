@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, CardContent, CardHeader } from "@material-ui/core/";
+import { Link } from "react-router-dom";
+import { Card, CardContent } from "@material-ui/core/";
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from "@material-ui/core/";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -18,11 +19,12 @@ import Typography from "@material-ui/core/Typography";
 import { sortBy } from "lodash";
 
 
-import AddToQueueIcon from '@material-ui/icons/AddToQueue';
+import SchoolIcon from '@material-ui/icons/School';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
 import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
-import HackImg from "../Graphics/ncciHackathonLogo.png";
+import HackImg from "../Graphics/hackclasssq.png";
+import hackathonLogo from "../Graphics/ncciHackathonLogo.png";
 
 class Register extends React.Component {
   constructor(props) {
@@ -63,8 +65,8 @@ class Register extends React.Component {
   }
 
   handleTextChange = name => event => {
-    this.setState({displayTeammateHelper: (name==="teamName")});
-    this.setState({displaySkillHelper: (name==="skills")});
+    this.setState({ displayTeammateHelper: (name === "teamName") });
+    this.setState({ displaySkillHelper: (name === "skills") });
     this.setState({ formTouched: true })
     this.setState({ [name]: event.target.value });
   };
@@ -152,19 +154,22 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div style={{paddingTop: '40px'}}>
+      <div style={{ paddingTop: '170px' }}>
         <div class="stripe--1">
           <div class="text-box--1">
             <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
+            <p>Presented by the Innovation Group.</p>
+            <p><img src={hackathonLogo} alt="logo" class="hackathon_Logo"></img></p>
           </div>
         </div>
         <Grid container justify="center">
           <Grid item md={5}>
-            <Card  style={{background: '#222222'}}>
-              <CardContent style={{ paddingTop: '200px' }}>
+            <Card style={{ background: '#222222' }}>
+              <CardContent>
                 <Grid container spacing={16} alignItems="stretch">
-                  <Grid item lg={5} style={{ backgroundColor: 'dark' }}>
-                    <Typography variant="h3" color="secondary">Register Here</Typography>
+                  <Grid item lg={5} style={{ backgroundColor: 'dark', paddingTop: '90px' }}>
+                    <Typography variant="h4" color="secondary">Register Now</Typography>
+                    <Typography align="left">Enter your firstname, lastname, and email address. If you have a team enter the name and teammates.</Typography>
                     <Hidden mdDown>
                       <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
                     </Hidden>
@@ -273,7 +278,7 @@ class Register extends React.Component {
                         <Tooltip title="Add a skill">
                           <div>
                             <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
-                              <AddToQueueIcon />
+                              <SchoolIcon />
                             </Fab>
                           </div>
                         </Tooltip>
@@ -289,6 +294,10 @@ class Register extends React.Component {
             </Card>
           </Grid>
         </Grid>
+        <footer2>
+          <Link to="/Home" style={{paddingRight: '10px', textDecoration: 'none'}}>Home</Link> | <Link to="/Baseline" style={{paddingLeft: '10px', textDecoration: 'none'}} >Enrollment</Link><br/>
+          © Copyright 2005-2019 NCCI Holdings, Inc. All Rights Reserved.
+        </footer2>
 
         <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose}>
           <DialogTitle>
