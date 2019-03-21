@@ -38,7 +38,7 @@ class Register extends React.Component {
       dialogType: '',
       dialogMessage: '',
       newItem: "",
-      skillOptions: ["nodeJs", "React", "Ng", "C#", "Java", "Oracle", "SQL Server"],
+      skillOptions: ["NodeJs", "React", "Angular", "C#", "Java", "Oracle", "SQL Server", "JavaScript", "CSS", "HTML5", "AJAX", "JSON", "Material-UI", "Selenium", "Jest", "Mongo", "Protractor", "Jasmine", "JUnit", "Windows", "Linux" ],
       firstName: "",
       lastName: "",
       email: "",
@@ -142,19 +142,19 @@ class Register extends React.Component {
         "Content-Type": "application/json"
       }
     }).then(res => res.json())
-    .then(res => {
-      //Check if response is 200(OK) 
-      console.log(userData);
-    }).catch(function (error) {
-      //Handle error
-      console.log(error);
-    });
+      .then(res => {
+        //Check if response is 200(OK) 
+        console.log(userData);
+      }).catch(function (error) {
+        //Handle error
+        console.log(error);
+      });
     this.props.history.push("/Baseline");
   }
 
   render() {
     return (
-      <div style={{ paddingTop: '170px' }}>
+      <div style={{ paddingTop: '250px' }}>
         <div class="stripe--1">
           <div class="text-box--1">
             <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
@@ -167,13 +167,14 @@ class Register extends React.Component {
             <Card style={{ background: '#222222' }}>
               <CardContent>
                 <Grid container spacing={16} alignItems="stretch">
-                  <Grid item lg={5} style={{ backgroundColor: 'dark', paddingTop: '90px' }}>
+                  <Grid item lg={5} style={{ backgroundColor: 'dark', paddingTop: '65px' }}>
                     <Typography variant="h4" color="secondary">Register Now</Typography>
-                    <Typography align="left">Enter your firstname, lastname, and email address. If you have a team enter the name and teammates.</Typography>
+                    <Typography align="left">Enter your first name, last name, and email address. If you have a team enter the name and teammates.</Typography>
                     <Hidden mdDown>
                       <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
                     </Hidden>
-                    <Typography variant="h5" color="secondary">and let the hacking begin!</Typography>
+                    <Typography align="left">Feel free to brainstorm ideas for our Hackathon. Also dont forget to select any computer skills you possess.</Typography>
+                    <Typography variant="h5" color="secondary">Get your Hack-on!</Typography>
                   </Grid>
                   <Grid item lg={7}>
                     <Grid container>
@@ -267,7 +268,7 @@ class Register extends React.Component {
                             fullWidth
                           >
                             {sortBy(this.state.skillOptions).map(skills => (
-                              <MenuItem key={skills} value={skills}>
+                              <MenuItem key={skills} value={skills}  dense={true}>
                                 {skills}
                               </MenuItem>
                             ))}
@@ -294,8 +295,9 @@ class Register extends React.Component {
             </Card>
           </Grid>
         </Grid>
+        <br />
+        <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Baseline" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Enrollment</Link>
         <footer2>
-          <Link to="/Home" style={{paddingRight: '10px', textDecoration: 'none'}}>Home</Link> | <Link to="/Baseline" style={{paddingLeft: '10px', textDecoration: 'none'}} >Enrollment</Link><br/>
           © Copyright 2005-2019 NCCI Holdings, Inc. All Rights Reserved.
         </footer2>
 

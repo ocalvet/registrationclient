@@ -184,7 +184,6 @@ a, a:visited {
     bottom: -260%;
     left: 0;
     color: #4e4d4d;
-    
     margin: 50px;
     left: 20%;
     right: 20%;
@@ -192,18 +191,12 @@ a, a:visited {
 
   footer2 {
     display: flex;
-    padding: 25px;
+    padding: 15px;
+    margin: 25px;
     border-radius: 10px;
+    color: #4e4d4d;
     background-color: #eaeaea;
     justify-content: center;
-    align-items: bottom;
-    bottom: -260%;
-    left: 0;
-    color: #4e4d4d;
-    
-    margin: 50px;
-    left: 20%;
-    right: 20%;
   }
 
   * {
