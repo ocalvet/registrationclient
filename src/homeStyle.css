@@ -190,6 +190,22 @@ a, a:visited {
     right: 20%;
   }
 
+  footer2 {
+    display: flex;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #eaeaea;
+    justify-content: center;
+    align-items: bottom;
+    bottom: -260%;
+    left: 0;
+    color: #4e4d4d;
+    
+    margin: 50px;
+    left: 20%;
+    right: 20%;
+  }
+
   * {
     -webkit-transition-property: all;
     -webkit-transition-duration: .2s;
