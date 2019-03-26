@@ -133,7 +133,7 @@ class Register extends React.Component {
       }
     };
 
-    fetch("http://40.121.12.189:8080/api/registrations/", {
+    fetch("http://172.31.2.55/api/registrations/", {
       mode: 'no-cors',
       method: "POST",
       body: JSON.stringify(userData),
