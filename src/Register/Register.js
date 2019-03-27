@@ -154,15 +154,15 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div style={{ paddingTop: '250px' }}>
+      <div >
         <div class="stripe--1">
           <div class="text-box--1">
             <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
             <p>Presented by the Innovation Group.</p>
-            <p><img src={hackathonLogo} alt="logo" class="hackathon_Logo"></img></p>
+            <p><img src={hackathonLogo} alt="logo" class="hackathon_Logo" style={{height: "100%"}}></img></p>
           </div>
         </div>
-        <Grid container justify="center">
+        <Grid container justify="center" style={{ paddingTop: '245px' }}>
           <Grid item md={5}>
             <Card style={{ background: '#222222' }}>
               <CardContent>
@@ -171,7 +171,7 @@ class Register extends React.Component {
                     <Typography variant="h4" color="secondary">Register Now</Typography>
                     <Typography align="left">Enter your first name, last name, and email address. If you have a team enter the name and teammates.</Typography>
                     <Hidden mdDown>
-                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px", opacity: "0.3" }} />
+                      <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px" }} />
                     </Hidden>
                     <Typography align="left">Feel free to brainstorm ideas for our Hackathon. Also dont forget to select any computer skills you possess.</Typography>
                     <Typography variant="h5" color="secondary">Get your Hack-on!</Typography>
@@ -206,7 +206,7 @@ class Register extends React.Component {
                         />
                       </Grid>
                       <Grid item xs={12} style={{ display: (this.state.displayTeammateHelper ? 'block' : 'none') }}>
-                        <Typography>Add teammates by clicking the icon</Typography>
+                        <Typography variant="h6" color="primary">Add teammates by clicking the icon</Typography>
                       </Grid>
                       <Grid item xs={10}>
                         <TextField id="teamName" label="Team Name"
@@ -248,11 +248,11 @@ class Register extends React.Component {
                         />
                       </Grid>
                       <Grid item xs={12} style={{ display: (this.state.displaySkillHelper ? 'block' : 'none') }}>
-                        <Typography>Add additional skills by clicking the icon</Typography>
+                        <Typography variant="h6" color="primary">Add additional skills by clicking the icon</Typography>
                       </Grid>
                       <Grid item xs={10}>
                         <FormControl fullWidth variant="outlined" style={{ marginTop: '15px' }}>
-                          <InputLabel shrink htmlFor="skillSelect">Skills</InputLabel>
+                          <InputLabel shrink htmlFor="skillSelect" style={{background: '000000'}}>Skills</InputLabel>
                           <Select
                             multiple
                             value={this.state.skills}
@@ -287,7 +287,7 @@ class Register extends React.Component {
                     </Grid>
                     <br />
                     <Button onClick={this.handleContinue} variant="outlined" color="primary" disabled={!this.formIsValid()}>
-                      Continue
+                      Register
                     </Button>
                   </Grid>
                 </Grid>
@@ -296,11 +296,7 @@ class Register extends React.Component {
           </Grid>
         </Grid>
         <br />
-        <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Baseline" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Enrollment</Link>
-        <footer2>
-          © Copyright 2005-2019 NCCI Holdings, Inc. All Rights Reserved.
-        </footer2>
-
+        <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Baseline" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Enrollment Data</Link>
         <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose}>
           <DialogTitle>
             Enter additional {this.state.dialogType}
@@ -312,6 +308,12 @@ class Register extends React.Component {
                 value={this.state.newItem} inputProps={{ maxLength: 35 }}
                 onChange={this.handleTextChange("newItem")}
                 margin="normal" variant="outlined" fullWidth />
+                <div>
+                    {(this.state.dialogType==="Teammate" && this.state.teamMembers.length > 0?
+                        this.state.teamMembers.map(m => (<div>{m}</div>)):'')}
+                    {(this.state.dialogType==="Skill" && this.state.skills.length > 0?
+                        this.state.skills.map(s => (<div>{s}</div>)):'')}
+                </div>
             </DialogContentText>
           </DialogContent>
           <DialogActions>

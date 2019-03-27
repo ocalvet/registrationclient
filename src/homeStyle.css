@@ -2,9 +2,9 @@
 html,
 body {
   font-size: 100%;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
-  background-color: #282c34;
+  background-color: #303030;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
     width: 100%;
     background: url(Graphics/ncci3.png) no-repeat top center;
     position: relative;
-    background-color: #282c34;
+    background-color: #303030;
     -webkit-animation: 5s overlay forwards;
             animation: 5s overlay forwards;
   }
@@ -60,7 +60,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   -webkit-transform: skewy(8deg);
           transform: skewy(8deg);
   color: rgba(255, 255, 255, 0.96);
