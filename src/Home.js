@@ -31,8 +31,8 @@ class Home extends React.Component {
                 </div>
 
                 <div class="text-box--3">
-                    {/* <About />
-                    <Faq /> */}
+                    <About />
+                    <Faq />
                     <footer>
                         <p>© Copyright 2005-2019 NCCI Holdings, Inc. All Rights Reserved.</p>
                     </footer>

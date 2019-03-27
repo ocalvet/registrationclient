@@ -180,7 +180,7 @@ class Register extends React.Component {
                     <Hidden mdDown>
                       <img src={HackImg} alt="Hack Class" style={{ height: "200px", width: "200px", borderRadius: "50%", marginTop: "25px", marginBottom: "25px" }} />
                     </Hidden>
-                    <Typography align="left">Feel free to brainstorm ideas for our Hackathon. Also dont forget to select any computer skills you possess.</Typography>
+                    <Typography align="left">Feel free to brainstorm ideas for our Hackathon. Also don't forget to select any computer skills you possess.</Typography>
                     <Typography variant="h5" color="secondary">Get your Hack-on!</Typography>
                   </Grid>
                   <Grid item lg={7}>
@@ -189,7 +189,7 @@ class Register extends React.Component {
                         <TextField id="firstName" label="First Name"
                           value={this.state.firstName} inputProps={{ maxLength: 15 }}
                           onChange={this.handleTextChange("firstName")}
-                          margin="normal" variant="outlined" fullWidth
+                          margin="normal" variant="outlined" fullWidth autoComplete="new-password"
                           helperText={this.state.formTouched && this.state.firstName.length === 0 ? 'Required' : ''}
                           error={this.state.formTouched && this.state.firstName.length === 0 ? true : false}
                         />
@@ -198,7 +198,7 @@ class Register extends React.Component {
                         <TextField id="lastName" label="Last Name"
                           value={this.state.lastName} inputProps={{ maxLength: 20 }}
                           onChange={this.handleTextChange("lastName")}
-                          margin="normal" variant="outlined" fullWidth
+                          margin="normal" variant="outlined" fullWidth autoComplete="new-password"
                           helperText={this.state.formTouched && this.state.lastName.length === 0 ? 'Required' : ''}
                           error={this.state.formTouched && this.state.lastName.length === 0 ? true : false}
                         />
@@ -207,7 +207,7 @@ class Register extends React.Component {
                         <TextField id="email" label="Email"
                           value={this.state.email} inputProps={{ maxLength: 50 }}
                           onChange={this.handleTextChange("email")}
-                          margin="normal" variant="outlined" fullWidth
+                          margin="normal" variant="outlined" fullWidth autoComplete="off"
                           helperText={this.state.formTouched && !this.emailIsValid(this.state.email) ? 'Valid Email Required' : ''}
                           error={this.state.formTouched && !this.emailIsValid(this.state.email) ? true : false}
                         />
@@ -219,7 +219,7 @@ class Register extends React.Component {
                         <TextField id="teamName" label="Team Name"
                           value={this.state.teamName} inputProps={{ maxLength: 35 }}
                           onChange={this.handleTextChange("teamName")}
-                          margin="normal" variant="outlined" fullWidth
+                          margin="normal" variant="outlined" fullWidth autoComplete="new-password"
                         />
                       </Grid>
                       <Grid item xs={2} style={{ verticalAlign: 'bottom' }}>
@@ -244,14 +244,14 @@ class Register extends React.Component {
                         <TextField id="ideaTitle" label="Idea"
                           value={this.state.ideaTitle} inputProps={{ maxLength: 100 }}
                           onChange={this.handleTextChange("ideaTitle")}
-                          margin="normal" variant="outlined" fullWidth
+                          margin="normal" variant="outlined" fullWidth autoComplete="new-password"
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <TextField id="ideaDescription" label="Idea Description"
                           value={this.state.ideaDescription} inputProps={{ maxLength: 200 }}
                           onChange={this.handleTextChange("ideaDescription")}
-                          margin="normal" variant="outlined" fullWidth
+                          margin="normal" variant="outlined" fullWidth autoComplete="new-password"
                         />
                       </Grid>
                       <Grid item xs={12} style={{ display: (this.state.displaySkillHelper ? 'block' : 'none') }}>
@@ -259,7 +259,7 @@ class Register extends React.Component {
                       </Grid>
                       <Grid item xs={10}>
                         <FormControl fullWidth variant="outlined" style={{ marginTop: '15px' }}>
-                          <InputLabel shrink htmlFor="skillSelect" style={{background: '000000'}}>Skills</InputLabel>
+                          <InputLabel htmlFor="skillSelect" style={{background: '000000'}}>Skills</InputLabel >
                           <Select
                             multiple
                             value={this.state.skills}
