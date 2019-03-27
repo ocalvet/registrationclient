@@ -45,10 +45,10 @@ p {
   position: absolute;
   height: 50vh;
   width: 100vw;
-  top: -10%;
+  top: -14%;
   margin-top: -200px;
   -webkit-transform: skewY(-58deg);
-          transform: skewY(-8deg);
+          transform: skewY(4deg);
   background: linear-gradient(-45deg, #018afe, #008ba8, #00ad13);
   background-size: 400% 400%;
   -webkit-animation: Gradient 5s ease infinite;
@@ -61,11 +61,11 @@ p {
   flex-direction: column;
   justify-content: center;
   /* align-items: center; */
-  -webkit-transform: skewy(8deg);
-          transform: skewy(8deg);
+  -webkit-transform: skewy(-4deg);
+          transform: skewy(-4deg);
   color: rgba(255, 255, 255, 0.96);
   position: absolute;
-  top: 40%;
+  top: 55%;
   left: 3%;
 }
 .text-box--2 {
@@ -76,7 +76,7 @@ p {
   color: rgba(254, 254, 255);
   position: absolute;
   bottom: 15%;
-  right: 12%;
+  right: 50%;
   z-index: 1;
   text-shadow: 2px 2px 8px rgb(78, 78, 78);
 }
@@ -100,18 +100,41 @@ p {
 
   .text-box--4 {
     position: absolute;
-    top: 45%;
-    left: -5%;
-    right: 100%;
+    top: 35%;
+    /* left: -5%; */
+    /* right: 100%; */
+    left: 50%
+
   }
 
   .hackathon_Logo {
     position: absolute;
-    height: 175%;
-    top: 10%;
-    left: 205%;
+    /* height: 175%; */
+    top: 40%;
+    left: 230%;
+    height: auto; 
+    width: auto; 
+    max-width: 350px; 
+    max-height: 350px;
     
   }
+
+
+#ncci_logo {
+    height: auto; 
+    width: auto; 
+    max-width: 500px; 
+    max-height: 500px;
+}
+
+#hackathon_logo {
+    height: auto; 
+    width: auto; 
+    max-width: 210px; 
+    max-height: 210px;
+    top: 48%;
+    left: 234%;
+}
 
 
 @-webkit-keyframes Gradient {

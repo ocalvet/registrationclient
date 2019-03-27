@@ -22,7 +22,11 @@ import { sortBy } from "lodash";
 import SchoolIcon from '@material-ui/icons/School';
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import PersonIcon from "@material-ui/icons/Person";
-import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
+import style from '../../src/homeStyle.css';
+
+// import logo from "../Graphics/NCCI_LogoWhite_TealTransparent.png";
+import logo2 from '../Graphics/NCCI-1st-IT-Hackathon-17.png';
+
 import HackImg from "../Graphics/hackclasssq.png";
 import hackathonLogo from "../Graphics/ncciHackathonLogo.png";
 
@@ -133,6 +137,8 @@ class Register extends React.Component {
       }
     };
 
+    var that=this;
+
     fetch("http://172.31.2.55/api/registrations/", {
       mode: 'no-cors',
       method: "POST",
@@ -145,22 +151,23 @@ class Register extends React.Component {
       .then(res => {
         //Check if response is 200(OK) 
         console.log(userData);
+        that.props.history.push("/Baseline");  
       }).catch(function (error) {
         //Handle error
         console.log(error);
       });
-    this.props.history.push("/Baseline");
+    //this.props.history.push("/Baseline");  
   }
 
   render() {
     return (
       <div >
         <div class="stripe--1">
-          <div class="text-box--1">
-            <h1><img src={logo} alt="NCCI"></img>NCCI Hackathon.</h1>
-            <p>Presented by the Innovation Group.</p>
-            <p><img src={hackathonLogo} alt="logo" class="hackathon_Logo" style={{height: "100%"}}></img></p>
-          </div>
+            <div class="text-box--1">
+                <img src={logo2} alt="NCCI" id="ncci_logo" ></img>
+                {/* <p>Presented by the Innovation Group.</p> */}
+                <img src={hackathonLogo} alt="logo" class="hackathon_Logo" id="hackathon_logo" ></img>
+            </div>
         </div>
         <Grid container justify="center" style={{ paddingTop: '245px' }}>
           <Grid item md={5}>
@@ -206,7 +213,7 @@ class Register extends React.Component {
                         />
                       </Grid>
                       <Grid item xs={12} style={{ display: (this.state.displayTeammateHelper ? 'block' : 'none') }}>
-                        <Typography variant="h6" color="primary">Add teammates by clicking the icon</Typography>
+                        <Typography variant="h5" color="primary">Add teammates by clicking the icon</Typography>
                       </Grid>
                       <Grid item xs={10}>
                         <TextField id="teamName" label="Team Name"
@@ -218,7 +225,7 @@ class Register extends React.Component {
                       <Grid item xs={2} style={{ verticalAlign: 'bottom' }}>
                         <Tooltip title="Add your teammate">
                           <div>
-                            <Fab color="primary" size="small" style={{ marginTop: '22px' }} disabled={(!this.state.teamName.length)}
+                            <Fab color="primary" size={(this.state.teamName.length?'large':'small')}  style={{ marginTop: '22px' }} disabled={(!this.state.teamName.length)}
                               onClick={() => this.handleDialogClickOpen('Teammate')}>
                               <PersonAddIcon />
                             </Fab>
@@ -248,7 +255,7 @@ class Register extends React.Component {
                         />
                       </Grid>
                       <Grid item xs={12} style={{ display: (this.state.displaySkillHelper ? 'block' : 'none') }}>
-                        <Typography variant="h6" color="primary">Add additional skills by clicking the icon</Typography>
+                        <Typography variant="h5" color="primary">Add additional skills by clicking the icon</Typography>
                       </Grid>
                       <Grid item xs={10}>
                         <FormControl fullWidth variant="outlined" style={{ marginTop: '15px' }}>
@@ -278,7 +285,7 @@ class Register extends React.Component {
                       <Grid item xs={2}>
                         <Tooltip title="Add a skill">
                           <div>
-                            <Fab color="primary" aria-label="Add" size="small" style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
+                            <Fab color="primary" aria-label="Add" size={(this.state.skills.length?'large':'small')}  style={{ marginTop: '22px' }} onClick={() => this.handleDialogClickOpen('Skill')} disabled={!this.state.formTouched}>
                               <SchoolIcon />
                             </Fab>
                           </div>
