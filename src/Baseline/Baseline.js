@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as _ from 'lodash';
+import 'array-flat-polyfill';
 import Avatar from '@material-ui/core/Avatar';
 import { Card, CardContent } from "@material-ui/core/";
 import Collapse from "@material-ui/core/Collapse";
