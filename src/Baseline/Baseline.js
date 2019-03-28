@@ -64,7 +64,8 @@ class Baseline extends React.Component {
     }
 
     getSkillData() {
-        let skillExtract = this.state.registrationData.map(r => r.user.skills).flat().map(s => (typeof s === "string") ? s.toUpperCase() : '');
+        //let skillExtract = this.state.registrationData.map(r => r.user.skills).flat().map(s => (typeof s === "string") ? s.toUpperCase() : '');
+        let skillExtract = [].concat.apply([], this.state.registrationData.map(r => r.user.skills)).map(s => (typeof s === "string") ? s.toUpperCase() : '')
         let skillGrp = _.countBy(skillExtract);
         let skillArray = Object.keys(skillGrp).map((key) => { return ({ 'name': key, 'count': skillGrp[key] }) })
 
@@ -78,9 +79,9 @@ class Baseline extends React.Component {
                 <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Register" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Register</Link><br /><br />
                 <Grid container spacing={24}>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '450px', background: '#222222' }}>
+                        <Card style={{background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={DeveloperImg} alt="Developer" onClick={this.handleUserExpandClick}/>
+                                <img src={DeveloperImg} alt="Developer" onClick={this.handleUserExpandClick} style={{cursor: "pointer", width: '100%'}}/>
                                 <Typography gutterBottom variant="h5" color="primary">{this.state.registrationData.length} Registered Users</Typography>
                                 <Collapse in={this.state.expandUsers}>
                                     <List dense={true} style={{maxHeight: '650px', overflow: 'auto'}}>
@@ -103,9 +104,9 @@ class Baseline extends React.Component {
                         </Card>
                     </Grid>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '450px', background: '#222222' }}>
+                        <Card style={{background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={TeamImg} alt="Team" onClick={this.handleTeamExpandClick} />
+                                <img src={TeamImg} alt="Team" onClick={this.handleTeamExpandClick} style={{cursor: "pointer", width: '100%'}}/>
                                 <Typography gutterBottom variant="h5" color="primary">{_.filter(this.state.registrationData, f => f.team.name !== "").length} Teams</Typography>
                                 <Collapse in={this.state.expandTeams}>
                                 <div style={{maxHeight: '650px', overflow: 'auto'}}>
@@ -131,9 +132,9 @@ class Baseline extends React.Component {
                         </Card>
                     </Grid>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '450px', background: '#222222' }}>
+                        <Card style={{background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={IdeaImg} alt="Idea" onClick={this.handleIdeaExpandClick} />
+                                <img src={IdeaImg} alt="Idea" onClick={this.handleIdeaExpandClick} style={{cursor: "pointer", width: '100%'}}/>
                                 <Typography gutterBottom variant="h5" color="primary">{_.filter(this.state.registrationData, f => f.idea.title !== "").length} Ideas</Typography>
                                 <Collapse in={this.state.expandIdeas}>
                                     <List dense={true}  style={{maxHeight: '650px', overflow: 'auto'}}>
@@ -156,9 +157,9 @@ class Baseline extends React.Component {
                         </Card>
                     </Grid>
                     <Grid item lg={3}>
-                        <Card style={{ maxWidth: '450px', background: '#222222' }}>
+                        <Card style={{background: '#222222' }}>
                             <CardContent style={{ paddingLeft: '0px', paddingRight: '0px' }}>
-                                <img src={SkillsImg} alt="Skills" onClick={this.handleSkillExpandClick} />
+                                <img src={SkillsImg} alt="Skills" onClick={this.handleSkillExpandClick} style={{cursor: "pointer", width: '100%'}}/>
                                 <Typography gutterBottom variant="h5" color="primary" >{this.getSkillData().length} Skills</Typography>
                                 <Collapse in={this.state.expandSkills}>
                                     <List dense={true}  style={{maxHeight: '650px', overflow: 'auto'}}>

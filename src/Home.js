@@ -27,15 +27,15 @@ class Home extends React.Component {
                 </div>
                 <div class="text-box--2">
                     <h1>A place to get your hack-on</h1>
-                    <p>Pure Awesome.</p>
+                    <p><a href="http://mysites.ncci.com/personal/apdrg/Documents/Shared%20with%20Everyone/NCCI%20Hackathon%202019%20Judging%20Guidelines.pdf" target="_blank">Rules and regulations</a></p>
                 </div>
 
                 <div class="text-box--3">
                     <About />
                     <Faq />
-                    <footer>
-                        <p>© Copyright 2005-2019 NCCI Holdings, Inc. All Rights Reserved.</p>
-                    </footer>
+
+
+
                 </div>
             </div>
         )
