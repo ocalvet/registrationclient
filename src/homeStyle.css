@@ -15,6 +15,7 @@ body {
     background-color: #303030;
     -webkit-animation: 5s overlay forwards;
             animation: 5s overlay forwards;
+    background-attachment:fixed;
   }
 
 h1 {
@@ -93,17 +94,17 @@ p {
     color: #4e4d4d;
     position: absolute;
     top: 90%;
-    left: 20%;
-    right: 20%;
+    left: 5%;
+    right: 5%;
 
   }
 
   .text-box--4 {
     position: absolute;
-    top: 35%;
+    top: 30%;
     /* left: -5%; */
     /* right: 100%; */
-    left: 50%
+    left: 40%
 
   }
 
@@ -291,71 +292,71 @@ a, a:visited {
   }
   @-webkit-keyframes neon6 {
     from {
-      text-shadow: 0 0 10px #fff,
-                 0 0 20px #fff,
-                 0 0 30px #fff,
-                 0 0 40px #ff0040,
-                 0 0 70px #ff0040,
-                 0 0 80px #ff0040,
-                 0 0 100px #ff0040,
-                 0 0 150px #ff0040;
+      text-shadow: 0 0 10px #00ad13,
+                 0 0 20px #00ad13,
+                 0 0 30px #00ad13,
+                 0 0 40px #018afe,
+                 0 0 70px #018afe,
+                 0 0 80px #018afe,
+                 0 0 100px #018afe,
+                 0 0 150px #018afe;
     }
     to {
-      text-shadow: 0 0 5px #fff,
-                 0 0 10px #fff,
-                 0 0 15px #fff,
-                 0 0 20px #ff0040,
-                 0 0 35px #ff0040,
-                 0 0 40px #ff0040,
-                 0 0 50px #ff0040,
-                 0 0 75px #ff0040;
+      text-shadow: 0 0 5px #00ad13,
+                 0 0 10px #00ad13,
+                 0 0 15px #00ad13,
+                 0 0 20px #018afe,
+                 0 0 35px #018afe,
+                 0 0 40px #018afe,
+                 0 0 50px #018afe,
+                 0 0 75px #018afe;
     }
   }
   
   
   @-moz-keyframes neon6 {
     from {
-      text-shadow: 0 0 10px #fff,
-                 0 0 20px #fff,
-                 0 0 30px #fff,
-                 0 0 40px #ff0040,
-                 0 0 70px #ff0040,
-                 0 0 80px #ff0040,
-                 0 0 100px #ff0040,
-                 0 0 150px #ff0040;
+      text-shadow: 0 0 10px #00ad13,
+                 0 0 20px #00ad13,
+                 0 0 30px #00ad13,
+                 0 0 40px #018afe,
+                 0 0 70px #018afe,
+                 0 0 80px #018afe,
+                 0 0 100px #018afe,
+                 0 0 150px #018afe;
     }
     to {
-      text-shadow: 0 0 5px #fff,
-                 0 0 10px #fff,
-                 0 0 15px #fff,
-                 0 0 20px #ff0040,
-                 0 0 35px #ff0040,
-                 0 0 40px #ff0040,
-                 0 0 50px #ff0040,
-                 0 0 75px #ff0040;
+      text-shadow: 0 0 5px #00ad13,
+                 0 0 10px #00ad13,
+                 0 0 15px #00ad13,
+                 0 0 20px #018afe,
+                 0 0 35px #018afe,
+                 0 0 40px #018afe,
+                 0 0 50px #018afe,
+                 0 0 75px #018afe;
     }
   }
   
   @keyframes neon6 {
     from {
-      text-shadow: 0 0 10px #fff,
-                 0 0 20px #fff,
-                 0 0 30px #fff,
-                 0 0 40px #ff0040,
-                 0 0 70px #ff0040,
-                 0 0 80px #ff0040,
-                 0 0 100px #ff0040,
-                 0 0 150px #ff0040;
+      text-shadow: 0 0 10px #00ad13,
+                 0 0 20px #00ad13,
+                 0 0 30px #00ad13,
+                 0 0 40px #018afe,
+                 0 0 70px #018afe,
+                 0 0 80px #018afe,
+                 0 0 100px #018afe,
+                 0 0 150px #018afe;
     }
     to {
-      text-shadow: 0 0 5px #fff,
-                 0 0 10px #fff,
-                 0 0 15px #fff,
-                 0 0 20px #ff0040,
-                 0 0 35px #ff0040,
-                 0 0 40px #ff0040,
-                 0 0 50px #ff0040,
-                 0 0 75px #ff0040;
+      text-shadow: 0 0 5px #00ad13,
+                 0 0 10px #00ad13,
+                 0 0 15px #00ad13,
+                 0 0 20px #018afe,
+                 0 0 35px #018afe,
+                 0 0 40px #018afe,
+                 0 0 50px #018afe,
+                 0 0 75px #018afe;
     }
   }
   
