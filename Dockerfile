@@ -10,4 +10,4 @@ COPY . .
 RUN npm install -g
 
 # Start api
-CMD npm start
+CMD REACT_APP_API_URL=http://hackathon.ncci.com/api/registrations npm start

@@ -133,7 +133,7 @@ class Register extends React.Component {
                 "lastName": this.state.lastName,
                 "email": this.state.email,
                 "skills": this.state.skills,
-                //"equipment": this.state.equipment
+                "equipment": this.state.equipment
             },
             "team": {
                 "name": this.state.teamName,
@@ -145,36 +145,39 @@ class Register extends React.Component {
             }
         };
 
-        var that = this;
-
-        fetch("http://172.31.2.55/api/registrations/", {
-            mode: 'no-cors',
+        fetch(`${process.env.REACT_APP_API_URL}`, {
             method: "POST",
             body: JSON.stringify(userData),
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             }
-        }).then(res => res.json())
-            .then(res => {
-                //Check if response is 200(OK) 
-                console.log(userData);
-                that.props.history.push("/Baseline");
-            }).catch(function (error) {
-                //Handle error
-                console.log(error);
-            });
-        //this.props.history.push("/Baseline");  
+        })
+        .then(res => {
+            console.log(res)
+            if (res.status !== 200) {
+                throw new Error("Error creating registration");
+            }
+            return res.json();
+        })
+        .then(json => {
+            console.log('Got data', json);
+            this.props.history.push("/Baseline");
+        }).catch(function (error) {
+            //Handle error
+            // TODO Add error to state so that it can be display for the user to contact us
+            console.log(error);
+        });
     }
 
     render() {
         return (
             <div >
-                <div class="stripe--1">
-                    <div class="text-box--1">
+                <div className="stripe--1">
+                    <div className="text-box--1">
                         <img src={logo2} alt="NCCI" id="ncci_logo" ></img>
                         {/* <p>Presented by the Innovation Group.</p> */}
-                        <img src={hackathonLogo} alt="logo" class="hackathon_Logo" id="hackathon_logo" ></img>
+                        <img src={hackathonLogo} alt="logo" className="hackathon_Logo" id="hackathon_logo" ></img>
                     </div>
                 </div>
                 <Grid container justify="center" style={{ paddingTop: '245px' }}>
@@ -258,8 +261,8 @@ class Register extends React.Component {
                                             </Grid>
                                             <Grid item xs={2}>
                                                 <div>
-                                                    {this.state.teamMembers.map(member =>
-                                                        <Chip name={member} label={member} onDelete={() => this.handleDeleteMember({ member })} color={"secondary"} style={{ marginBottom: '3px', marginRight: '3px' }}
+                                                    {this.state.teamMembers.map((member, i) =>
+                                                        <Chip key={i} name={member} label={member} onDelete={() => this.handleDeleteMember({ member })} color={"secondary"} style={{ marginBottom: '3px', marginRight: '3px' }}
                                                             avatar={<Avatar> <PersonIcon /> </Avatar>} />
                                                     )}
                                                 </div>
@@ -328,14 +331,14 @@ class Register extends React.Component {
                 </Grid>
                 <br />
                 <Link to="/Home" style={{ paddingRight: '10px', textDecoration: 'none' }}>Home</Link> | <Link to="/Baseline" style={{ paddingLeft: '10px', textDecoration: 'none' }} >Enrollment Data</Link>
-                <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose} fullScreen={(this.state.dialogType === 'Equipment')?true:false}>
+                <Dialog open={this.state.dialogOpen} onClose={this.handleDialogClose} fullScreen={(this.state.dialogType === 'Equipment') ? true : false}>
                     <DialogTitle>
                         {(this.state.dialogType === 'Equipment') ? 'Technology Equipment Flow Chart' : (<div>Enter additional {this.state.dialogType}</div>)}
                     </DialogTitle>
                     <DialogContent >
                         {(this.state.dialogType === 'Equipment') ?
-                            <DialogContentText style={{textAlign: "center"}}>
-                                        <img src={HackathonTechFlow} style={{width: "70%"}}/>
+                            <DialogContentText style={{ textAlign: "center" }}>
+                                <img src={HackathonTechFlow} style={{ width: "70%" }} alt="Ugly tech flow" />
                             </DialogContentText> :
                             <DialogContentText>
                                 <Typography>{this.state.dialogMessage}</Typography>
@@ -347,16 +350,16 @@ class Register extends React.Component {
                                     {(this.state.dialogType === "Teammate" && this.state.teamMembers.length > 0 ?
                                         this.state.teamMembers.map(m => (<div>{m}</div>)) : '')}
                                     {(this.state.dialogType === "Skill" && this.state.skills.length > 0 ?
-                                        this.state.skills.map(s => (<div>{s}</div>)) : '')}
+                                        this.state.skills.map((s, i) => (<div key={i}>{s}</div>)) : '')}
                                 </div>
                             </DialogContentText>
                         }
                     </DialogContent>
                     <DialogActions>
                         {(this.state.dialogType !== 'Equipment') ?
-                        <Button onClick={() => this.handleDialogAddItem()} color="primary" disabled={(this.state.newItem === "")} autoFocus>
-                            Add
-                        </Button>:''}
+                            <Button onClick={() => this.handleDialogAddItem()} color="primary" disabled={(this.state.newItem === "")} autoFocus>
+                                Add
+                        </Button> : ''}
                         <Button onClick={this.handleDialogClose} color="disabled">
                             Done
                         </Button>
