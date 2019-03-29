@@ -32,7 +32,7 @@ class Baseline extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://172.31.2.55/api/registrations", {          
+        fetch(`${process.env.REACT_APP_API_URL}`, {          
             method: "GET",
             headers: {
               "Accept": "text/plain"
@@ -110,8 +110,8 @@ class Baseline extends React.Component {
                                 <Typography gutterBottom variant="h5" color="primary">{_.filter(this.state.registrationData, f => f.team.name !== "").length} Teams</Typography>
                                 <Collapse in={this.state.expandTeams}>
                                 <div style={{maxHeight: '650px', overflow: 'auto'}}>
-                                    {_.filter(this.state.registrationData, f => f.team.name !== "").map(r =>
-                                        <div>
+                                    {_.filter(this.state.registrationData, f => f.team.name !== "").map((r, i) =>
+                                        <div key={i}>
                                             <ListItem>
                                                 <ListItemAvatar>
                                                     <Avatar>
@@ -121,7 +121,7 @@ class Baseline extends React.Component {
                                                 <ListItemText primary={r.team.name} secondary={`Captain: ${r.user.firstName} ${r.user.lastName}`} />
                                             </ListItem>
                                             <List dense={true}>
-                                                {r.team.members.map(w => <ListItemText primary={w} style={{ display: 'flex', justifyContent: 'flex-end' }} />)}
+                                                {r.team.members.map((w, i) => <ListItemText key={i} primary={w} style={{ display: 'flex', justifyContent: 'flex-end' }} />)}
                                             </List>
                                             <Divider />
                                         </div>
@@ -138,8 +138,8 @@ class Baseline extends React.Component {
                                 <Typography gutterBottom variant="h5" color="primary">{_.filter(this.state.registrationData, f => f.idea.title !== "").length} Ideas</Typography>
                                 <Collapse in={this.state.expandIdeas}>
                                     <List dense={true}  style={{maxHeight: '650px', overflow: 'auto'}}>
-                                        {_.filter(this.state.registrationData, f => f.idea.title !== "").map(r =>
-                                            <div>
+                                        {_.filter(this.state.registrationData, f => f.idea.title !== "").map((r, i) =>
+                                            <div key={i}>
                                                 <ListItem>
                                                     <ListItemAvatar>
                                                         <Avatar>
@@ -163,8 +163,8 @@ class Baseline extends React.Component {
                                 <Typography gutterBottom variant="h5" color="primary" >{this.getSkillData().length} Skills</Typography>
                                 <Collapse in={this.state.expandSkills}>
                                     <List dense={true}  style={{maxHeight: '650px', overflow: 'auto'}}>
-                                        {_.orderBy(this.getSkillData(), 'count', 'desc').map(s =>
-                                            <div>
+                                        {_.orderBy(this.getSkillData(), 'count', 'desc').map((s, i) =>
+                                            <div key={i}>
                                                 <ListItem>
                                                     <ListItemAvatar>
                                                         <Avatar>
